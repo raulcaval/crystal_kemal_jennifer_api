@@ -1,0 +1,13 @@
+name: simple_crystal_app
+version: 0.1.0
+
+authors:
+  - Raul Cavalcanti <raul.a.s.cavalcanti@gmail.com>
+
+targets:
+  simple_crystal_app:
+    main: src/simple_crystal_app.cr
+
+crystal: 1.8.2
+
+license: MIT
