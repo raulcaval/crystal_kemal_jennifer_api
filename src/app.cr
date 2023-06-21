@@ -7,8 +7,10 @@ end
 
 require "kemal"
 require "jennifer"
+require "jennifer/adapter/postgres"
 require "../config/*"
-require "./models/*"
+require "./models/**"
+require "json"
 
 get "/" do
   "Hello World!"
@@ -22,7 +24,18 @@ post "/user" do |env|
 
   user = User.new({:name => "#{name}", :age => "#{age}"})
   user.save
-  env.response.status_code = 201 #Created
+
+  env.response.status_code = 201 # Created
+end
+
+get "/users" do |env|
+  env.response.content_type = "application/json"
+
+  users = User.all
+  result = Array(UserData).from_json(users.to_json)
+
+  env.response.status_code = 200 # ok
+  result.to_json
 end
 
 Kemal.run
