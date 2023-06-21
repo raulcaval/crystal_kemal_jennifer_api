@@ -26,6 +26,8 @@ post "/user" do |env|
   user.save
 
   env.response.status_code = 201 # Created
+
+  user.to_json
 end
 
 get "/users" do |env|
@@ -36,6 +38,22 @@ get "/users" do |env|
 
   env.response.status_code = 200 # ok
   result.to_json
+end
+
+put "/user/:id" do |env|
+  env.response.content_type = "application/json"
+
+  id = env.params.url["id"]
+
+  name = env.params.json["name"]
+  age = env.params.json["age"]
+
+  user = User.find!(id)
+  user.update(name: "#{name}", age: "#{age}")
+  # user.reload
+
+  env.response.status_code = 200 # ok
+  user.to_json
 end
 
 Kemal.run
