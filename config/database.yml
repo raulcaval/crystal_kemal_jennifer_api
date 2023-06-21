@@ -3,6 +3,8 @@ default: &default
   user: test
   password: test
   adapter: postgres
+  migration_files_path: ./db/migrations
+  skip_dumping_schema_sql: true
 
 development:
   <<: *default
