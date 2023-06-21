@@ -56,4 +56,11 @@ put "/user/:id" do |env|
   user.to_json
 end
 
+
+delete "/user/:id" do |env|
+  id = env.params.url["id"]
+  User.delete(id)
+  env.response.status_code = 204 # ok
+end
+
 Kemal.run
