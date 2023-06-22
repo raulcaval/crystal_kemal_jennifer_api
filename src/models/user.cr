@@ -8,4 +8,5 @@ class User < Jennifer::Model::Base
     created_at: Time?,
     updated_at: Time?,
   )
+
 end
