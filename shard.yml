@@ -31,3 +31,8 @@ dependencies:
 
   dotenv:
     github: drum445/dotenv
+
+    
+  jennifer_twin:
+    github: imdrasil/jennifer_twin
+    version: 0.1.1
